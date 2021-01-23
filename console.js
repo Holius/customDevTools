@@ -61,7 +61,7 @@
             HTMLDocument.prototype.attr_name_match = function (regex) {
                 return window.h.attr_match('name').call(this.body, regex)
             }
-                //returns (if extant) first regex match for DOM element in sibling then children
+            //returns (if extant) first regex match for DOM element in sibling then children
             HTMLElement.prototype.contains_sc = function (regex, direction = 0) { //do NOT use lambda since this cannot go one level higher
                 const elm = this //readability
                 if (!elm) return
