@@ -4,13 +4,12 @@
         //check for existing value
         if (window.a === undefined) {
             window.a = {}
-            window.a.check = true
             //select
-            window.a.s = (selector, elm) => {
+            window.a.s = (selector, elm = document) => {
                 return elm.querySelector(selector)
             }
             //select all
-            window.a.sa = (selector, elm) => {
+            window.a.sa = (selector, elm = document) => {
                 return elm.querySelectorAll(selector)
             } 
             //returns (if extant) first regex match for DOM element in sibling then children 
@@ -34,8 +33,10 @@
                     if (result) return result
                 } 
             }
-            console.log('window.a added to state')
-        } 
+            HTMLDocument.prototype.contains_sc = function (regex, direction = 0) { //do NOT use lambda since this cannot go one level higher
+                return HTMLElement.prototype.contains_sc.call(this.body, regex, direction)
+             }
+        }
     }
     let s = document.createElement('script')
     s.textContent = `(${customConsole})()`
