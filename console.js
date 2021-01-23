@@ -31,7 +31,7 @@
             }
             //common selectors
             window.se = {
-                buy : '[href*="buy-now="]'
+                
             }
             //select all
             HTMLElement.prototype.sa = function (selector) {
