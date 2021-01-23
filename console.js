@@ -87,7 +87,7 @@
                 return HTMLElement.prototype.contains_sc.call(this.body, regex, direction)
             } 
             console.log('debugging helpers added to state')
-}
+        }
     }
     let s = document.createElement('script')
     s.textContent = `(${customConsole})()`
