@@ -22,9 +22,9 @@ In `console.js` add code within `function customConsole` to customize one's dev 
 Most changes made within directory auto load into the extension.  If changes do not seem to be implemented go to `chrome://extensions` in Chrome browswer and click the reload button for the extension. 
 
 ## Known Limitations
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. this extension does not work with Google websites (e.g., www.google.com): Google does not support it.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. this extension does not work in headless browswer mode: Google does not support it.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. extension usually does not load on a page redirect or clicking a link with target=_blank (new tab).  In this case, reload the page, and it has always worked.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1.** this extension does not work with Google websites (e.g., www.google.com): Google does not support it. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.** this extension does not work in headless browswer mode: Google does not support it. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3.** extension usually does not load on a page redirect or clicking a link with target=_blank (new tab).  In this case, reload the page, and it has always worked. </br>  
 
 ## Troubleshooting
 
