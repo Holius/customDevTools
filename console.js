@@ -7,10 +7,13 @@
             window.h = {}
             //return string represention of instance's prototype
             window.h.proto = function (instance) {
+                if (arguments.length !== 1) throw (`expected 1 argument got ${arguments.length}.`)
                 try {
                     return new String(Object.getPrototypeOf(instance).constructor).match(/(?<=function\s+).*(?=\(\))/)[0]
                 } catch {
-                    return null //could be thrown by an undefined value as well
+                    if (instance === null) return 'Null'
+                    if (instance === undefined) return 'Undefined'
+                    throw ('instance not correctly handled in h.proto method')
                 }
             }
             //curried function for readable composition on attribute value and name matching
