@@ -82,8 +82,8 @@
                 let children = search === 's' ? elm.children : elm.querySelectorAll('*')
                 children = search === 'c' ? [elm, ...children] : [...children]
                 children.forEach( child => {
-                    if (child.textContent.match(regex)) {
-                        results.push([child, child.textContent.match(regex)[0], child.textContent])
+                    if (child.innerText.match(regex)) {
+                        results.push([child, child.innerText.match(regex)[0], child.innerText])
                     }
                 })        
                 return results
