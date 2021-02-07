@@ -15,6 +15,7 @@
                     if (instance === undefined) return 'Undefined'
                     throw ('instance not correctly handled in h.proto method')
                 }
+            // Regular Expression Regex --> RegExp
             }
             //curried function for readable composition on attribute value and name matching
             window.h.attr_match = function (key) {
@@ -65,29 +66,31 @@
                 return window.h.attr_match('name').call(this.body, regex)
             }
             //returns (if extant) first regex match for DOM element in sibling then children
-            HTMLElement.prototype.contains_sc = function (regex, direction = 0) { //do NOT use lambda since this cannot go one level higher
-                const elm = this //readability
+            /*
+
+            */
+            HTMLElement.prototype.contains_r = function (regex, search = 'c') { //do NOT use lambda since this cannot go one level higher
+                let elm = this
                 if (!elm) return
-                if (elm.textContent.match(regex)) return elm.textContent.match(regex)[0]
+                if (!['s', 'c', 'sc', 'cs'].includes(search)) throw (`expected 's', 'c', 'sc', or 'cs' got '${search}'`)
+                if (h.proto(regex) !== 'RegExp') throw ('expressing that you RegEx is invalid!')
+                const isBody = h.proto(elm) === 'HTMLBodyElement'
+                if (!isBody && search.includes('s')) elm = this.parentElement
+                if (h.proto(elm) === 'HTMLBodyElement') search = 'c'
+                const results = []
                 
-                if (elm.previousElementSibling && direction <= 0) {
-                    const result = elm.contains_sc.call(elm.previousElementSibling, regex, -1)
-                    if (result) return result
-                }
-                if (elm.nextElementSibling && direction >= 0) { 
-                    const result = elm.contains_sc.call(elm.previousElementSibling, regex, 1)
-                    if (result) return result
-                } 
-            
-                for (let i = 0; i < elm.children.length; i++) {
-                    const child = elm.children[i]
-                    const result = elm.contains_sc.call(child, regex, null)
-                    if (result) return result
-                } 
+                let children = search === 's' ? elm.children : elm.querySelectorAll('*')
+                children = search === 'c' ? [elm, ...children] : [...children]
+                children.forEach( child => {
+                    if (child.textContent.match(regex)) {
+                        results.push([child, child.textContent.match(regex)[0], child.textContent])
+                    }
+                })        
+                return results
             } 
             //ensures document object behaves as expected behavior --> see function above for functionality
-            HTMLDocument.prototype.contains_sc = function (regex, direction = 0) { //do NOT use lambda since this cannot go one level higher
-                return HTMLElement.prototype.contains_sc.call(this.body, regex, direction)
+            HTMLDocument.prototype.contains_r = function (regex) { //do NOT use lambda since this cannot go one level higher
+                return HTMLElement.prototype.contains_r.call(this.body, regex, 'c')
             } 
             console.log('debugging helpers added to state')
         }

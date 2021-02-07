@@ -13,8 +13,8 @@ Provide custom methods/functions and variables to Chrome Dev Tools for developme
 ## Functionality 
 
 Chrome browser will automatically inject *console.js* (insert one's custom code inside `function customConsole`) into the current page. </br>
-To modify when/if Chrome injects code go to background.js (instructions are there).
-To modify what pages this extension applies to modify manifest.json's URL glob patterns: syntax similar to RegEx.  Read [Google's Documentation](https://developer.chrome.com/docs/extensions/mv2/match_patterns/) on glob patterns as it is much more limited than RegEx.
+To modify when/if Chrome injects code go to background.js (instructions are there). </br>
+To modify what pages this extension applies to modify manifest.json's URL glob patterns: syntax similar to RegEx.  Read [Google's Documentation](https://developer.chrome.com/docs/extensions/mv2/match_patterns/) on glob patterns as it is much more limited than RegEx. </br>
 
 ## Customization
 

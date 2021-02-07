@@ -13,8 +13,10 @@
       "default_title": "custom dev"
     },
     "permissions": [
-      "https://*/*",
-      "http://*/*",
+      "*://www.simplertrading.com/*",
+      "*://dev.*",
+      "http://127.0.0.1/*",
+      "https://127.0.0.1/*",
       "tabs",
       "webNavigation"
     ]
