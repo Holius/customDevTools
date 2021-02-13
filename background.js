@@ -9,6 +9,6 @@ chrome.webNavigation.onDOMContentLoaded.addListener(function(tab) {
 	// for the current tab, inject the "inject.js" file & execute it
 	//code execution
 	chrome.tabs.executeScript(tab.ib, {
-		file: 'console.js'
+		file: 'inject_module.js'
 	});
 });
