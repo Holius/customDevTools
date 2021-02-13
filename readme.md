@@ -27,7 +27,7 @@ Most changes made within directory auto load into the extension.  If changes do 
 Code will only inject when a **match** with the current URL occurs.  These matches are defined as glob patterns in the `permissions array` in `manifest.json`: see [Google's Documentation](https://developer.chrome.com/docs/extensions/mv2/match_patterns/) for proper syntax. 
 
 ## Known Limitations
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1.** this extension does not work with Google's main site (e.g., www.google.com): Google does not support it. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**1.** this extension does not work with Google's main site (i.e., www.google.com): Google does not support it. </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**2.** this extension does not work in headless browswer mode: Google does not support it. </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**3.** extension usually does not load on a page redirect or clicking a link with `target=_blank` (new tab).  In this case, reload the page. </br>  
 
