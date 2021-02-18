@@ -39,14 +39,25 @@ export function elements () {
         if (!isBody && search.includes('s')) elm = this.parentElement
         if (h.proto(elm) === 'HTMLBodyElement') search = 'c'
         const results = []
-        
-        let children = search === 's' ? elm.children : elm.querySelectorAll('*')
-        children = search === 'c' ? [elm, ...children] : [...children]
-        children.forEach( child => {
-            if (child.innerText.match(regex)) {
-                results.push([child, child.innerText.match(regex)[0], child.innerText])
+        const children = search.includes('s') ? [...elm.children] : [elm]
+        function findBottomLevelMatch(elm) {
+            var result
+            if (elm.children && elm.children.length) {
+                new Array(...elm.children).forEach(child => {
+                    if (findBottomLevelMatch(child)) result = true
+                })
             }
-        })        
+            if (result === true) return true
+            if (elm.innerText && (elm.innerText.match(regex) !== null)) {
+                results.push(elm)
+                return true
+            }
+            return false
+        }
+        for (let child of children) {
+            findBottomLevelMatch(child)
+        }
+
         return results
     } 
     //ensures document object behaves as expected behavior --> see function above for functionality
